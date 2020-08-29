@@ -17,9 +17,41 @@
       href="https://fonts.googleapis.com/css?family=Roboto:400,700"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+
+    <div class = 'header'>
+      <head id= 'head'>
+        HYF Repositories
+      </head>
+      <select name="repositories" id="Repositories">
+        <option value="0">Choose a Repository</option>
+        <option value="SampleRepo1"> SampleRepo1</option>
+        <option value="AndAnotherOne">AndAnotherOne</option>
+        <option value="HYF-Is-The-Best">HYF-Is-The-Best</option>
+      </select>
+      </div>
+    
+    <section class= 'repositories-container'>
+      <div>
+        <label>Repository:</label>
+        <p id = 'Repository'></p>
+      </div>
+      <div>
+        <label>description:</label>
+        <p id = 'description'></p>
+      </div>
+      <div>
+        <label>forks:</label>
+        <p id= 'forks'></p>
+      </div>
+      <div>
+        <label>updated:</label>
+        <p id= 'updated'></p>
+      </div>
+      
+    </section>
     <script src="./script.js"></script>
   </body>
 </html>

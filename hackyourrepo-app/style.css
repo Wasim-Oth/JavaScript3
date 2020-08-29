@@ -1,3 +1,49 @@
 /* 
   Write here your CSS rules for HackYourRepo!
 */
+body{
+  margin: 0 auto;
+  padding: 0;
+  width: 70%;
+  background-image: linear-gradient(to right,rgb(56, 143, 184),rgb(120, 161, 180));
+}
+.header{
+  background-color: #3F51B5;
+  height: 3.5rem;
+  color: white;
+  font-size: 1.1rem;
+}
+.header, head{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 0 15px;
+}
+.header select{
+  margin-left: 1.5rem;
+  max-width: 8rem;
+}
+
+.repositories-container{
+  border: 1px solid white;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.24);
+  margin: 0.2rem;
+  padding:1rem;
+  display: none;
+  background-color: white;
+}
+label{
+  font-weight: bold;
+}
+p{
+  margin-left: 4rem;
+}
+
+@media screen and (max-width: 370px) {
+  .header select{
+    max-width: 7rem;
+  }
+  body{
+    width: 80%;
+  }
+}

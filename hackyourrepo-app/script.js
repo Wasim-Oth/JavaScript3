@@ -73,55 +73,58 @@
         select.innerHTML +=`<option> ${data[i].name} </option>`
         }
       }
-      
   getData()
 
       async function appendToDom(event){
+        try{
         let response = await fetch (url)
         let data = await response.json(); 
         data.forEach(Repository => {   
 
-          if ( Repository.name == event.target.value){
-            RepositoryText.textContent= Repository.name
-            descriptionText.textContent= Repository.description
-            forksNumber.textContent= Repository.forks 
-            updateText.textContent= Repository.updated_at
-        
-            // another fetch request for contibutors
-            fetch(Repository.contributors_url)
-            .then(res => res.json())
-            .then( data =>{
-              data.forEach(contributor => { 
-              // log(contributor)
+            if ( Repository.name == event.target.value){
+              RepositoryText.textContent= Repository.name
+              descriptionText.textContent= Repository.description
+              forksNumber.textContent= Repository.forks 
+              updateText.textContent= Repository.updated_at
+          
+              // another fetch request for contibutors
+              async function contributors(){
+                try{
+                const res = await fetch(Repository.contributors_url)
+                const data = await  res.json()
+                data.forEach(contributor => { 
 
-              //CONRIBUTORS 
-                const contributorsConatiner = document.createElement('div')
-                contributorsConatiner.className= 'contributors'
-                section2.appendChild(contributorsConatiner)
+                //CONRIBUTORS 
+                  const contributorsConatiner = document.createElement('div')
+                  contributorsConatiner.className= 'contributors'
+                  section2.appendChild(contributorsConatiner)
 
-              
-              // create 'img' tag (contributorImg) and append it to contributorsConatiner
-                let contributorImg = document.createElement('img')
-                contributorImg.src= contributor.avatar_url
-                contributorImg.setAttribute("style", "width:60px") 
-                contributorsConatiner.appendChild(contributorImg)
+                
+                // create 'img' tag (contributorImg) and append it to contributorsConatiner
+                  let contributorImg = document.createElement('img')
+                  contributorImg.src= contributor.avatar_url
+                  contributorImg.setAttribute("style", "width:60px") 
+                  contributorsConatiner.appendChild(contributorImg)
 
-                // create 'a' tag (contributorsName) and append it to contributorsConatiner
-                let contributorName = document.createElement('a')
-                contributorName.href= contributor.html_url
-                contributorName.textContent= contributor.login
-                contributorsConatiner.appendChild(contributorName)
+                  // create 'a' tag (contributorsName) and append it to contributorsConatiner
+                  let contributorName = document.createElement('a')
+                  contributorName.href= contributor.html_url
+                  contributorName.textContent= contributor.login
+                  contributorsConatiner.appendChild(contributorName)
 
-                //create div (contributions)
-                let contributions = document.createElement('div')
-                contributions.className= 'contributions'
-                contributions.textContent= contributor.contributions
-                contributorsConatiner.appendChild(contributions)
-              })
-            })
-            .catch(err => console.log(err))
-          } 
-        })
+                  //create div (contributions)
+                  let contributions = document.createElement('div')
+                  contributions.className= 'contributions'
+                  contributions.textContent= contributor.contributions
+                  contributorsConatiner.appendChild(contributions)
+                  })
+                } catch(error) {log('something went wrong with contibutors function', error)}
+              }
+              contributors() 
+            } 
+          })
+        }catch(error) {log('something went wrong with appendToDom function', error)}
       }
     }
-main()
+
+    main()

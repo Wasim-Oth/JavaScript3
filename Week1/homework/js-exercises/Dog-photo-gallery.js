@@ -1,42 +1,47 @@
-const log = console.log;
-const btn = document.querySelector('#btn');
-const btn2 = document.querySelector('#btn2');
-const url = 'https://dog.ceo/api/breeds/image/random';
-const body = document.querySelector('body');
-const ul = document.querySelector('#ul');
-const li = document.createElement('li');
-const img = document.createElement('img');
+ const url = 'https://dog.ceo/api/breeds/image/random'
+ const body = document.body
 
-btn.addEventListener('click', function(){
-const xhr = new XMLHttpRequest();
+  //create 2 buttons and append them to the body
+  const buttonXMLHttp = document.createElement('button')
+  buttonXMLHttp.innerText= 'show photo with XMLHttp'
+  const buttonAxios = document.createElement('button')
+  buttonAxios.innerText= 'show photo with axios'
+  body.appendChild(buttonXMLHttp)
+  body.appendChild(buttonAxios)
 
-xhr.onreadystatechange =  () => {
-if (xhr.readyState === 4) {
-    let data = JSON.parse(xhr.response);
-    img.src= data.message;
-    li.appendChild(img);
-    ul.appendChild(li);
-    body.appendChild(ul);
-    // img.style.width = '400px';
-}
-};
-
-xhr.onerror = function (err){
-    console.warn(err);
-};
-
-xhr.open('GET', url, true);
-xhr.send()
-
-})
-
-
-btn2.addEventListener('click', function(){
-axios.get(url).then(response => {
-    img.src=  response.data.message;
-    li.appendChild(img);
-    ul.appendChild(li);
-    body.appendChild(ul);
-});
-})
-
+  //create div (photosContainer) to append the photos in it
+  const photosContainer = document.createElement('div')
+  body.appendChild(photosContainer)
+  
+  //XMLHttp request
+  buttonXMLHttp.addEventListener('click', function(){
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange =  () => {
+  if (xhr.readyState === 4) {
+      let data = JSON.parse(xhr.response);
+      const img = document.createElement('img');
+      img.src= data.message;
+      img.style.cssText= "width:200px; height:200px; margin:10px"
+      photosContainer.appendChild(img); 
+  }
+  };
+  xhr.onerror = function (err){
+      console.log(`ops something went wrong with XMLHttp request ${err}`);
+  }; 
+  xhr.open('GET', url, true);
+  xhr.send()
+  })
+  
+  // axios request
+  buttonAxios.addEventListener('click', function(){
+  axios.get(url).then(response => {
+      const img = document.createElement('img');
+      img.src=  response.data.message;
+      img.style.cssText= "width:200px; height:200px; margin:10px"
+      photosContainer.appendChild(img);
+  })
+  .catch (error => {
+    console.log(`ops something went wrong with axios request ${error}`)
+  })
+  })
+  

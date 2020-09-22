@@ -1,5 +1,3 @@
-"use strict";
-
-/*
-  Write here your JavaScript for HackYourRepo!
-*/
+'use strict';
+import { main } from './util/main.js';
+main();

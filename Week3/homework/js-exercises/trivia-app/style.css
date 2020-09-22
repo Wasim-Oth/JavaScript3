@@ -1,0 +1,20 @@
+ td{
+    display: none; 
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+ } 
+
+ th{
+    padding: 10px;
+    margin: auto;
+} 
+th:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+
+table{
+    background-color: lightgray;
+    width: 70%;
+}

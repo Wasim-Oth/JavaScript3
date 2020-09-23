@@ -18,10 +18,12 @@ export function main() {
   headerContainer.appendChild(head);
   headerContainer.appendChild(select);
 
-  // first section
+   // create gridConatiner which contain section1 (letf side) and section2 (right side 'controbuters')
   const gridConatiner = document.createElement('div');
   gridConatiner.className = 'grid-container';
   body.appendChild(gridConatiner);
+  
+  //first section (left side)
   const section1 = document.createElement('section');
   section1.className = 'repositories-container';
   gridConatiner.appendChild(section1);
@@ -58,22 +60,19 @@ export function main() {
   section2.className = 'repositories-container';
   gridConatiner.appendChild(section2);
 
+  //invoke getData 
   getData(select, url);
 
   //  change event for the select
   select.addEventListener('change', appendToDom);
-
-  // i tried to put this function in a different file and then imported but i couldn't because all the variables are in the (main) function.
-  //   can you please tell me what is the solution for that? 
-
-  //invoke getData 
-  getData(select, url)
-
+ 
   //event listener to the Repositories info and the create the contributors
  select.addEventListener('change', appendToDom)
+  
+  // i tried to put this function in a different file and then imported but i couldn't because all the variables are in the (main) function.
+  //   can you please tell me what is the solution for that? 
  async function appendToDom(event){
-   try{
-       
+   try{   
    let response = await fetch (url)
    let data = await response.json(); 
    section2.innerHTML=''

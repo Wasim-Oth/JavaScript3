@@ -1,4 +1,4 @@
-class Abdulkareem {
+class Person {
     constructor(name, age, gender, city, family, work, hasaAnimal){
         this.name = name
         this.age = age
@@ -30,7 +30,7 @@ class Abdulkareem {
     }
     
 
-class Adel {
+class Animal {
     constructor(type, name, age, color){
         this.type= type
         this.name= name
@@ -45,10 +45,10 @@ class Adel {
     }
 }
 
-const abdlah = new Abdulkareem('Abdulkareem', 35, 'man', 'Riyadh', ['wife', 'first child', 'second child', 'third child'], 'construction worker', true)
+const abdlah = new Person ('Abdulkareem', 35, 'man', 'Riyadh', ['wife', 'first child', 'second child', 'third child'], 'construction worker', true)
 console.log(abdlah)
 console.log(abdlah.animals('horse'))
 
-const adel = new Adel('horse', 'Adel', 15, 'brown')
+const adel = new Animal('horse', 'Adel', 15, 'brown')
 console.log(adel)
 console.log(adel.aboutAdel('grass', 'helps transport materials for Abdulkareem'))

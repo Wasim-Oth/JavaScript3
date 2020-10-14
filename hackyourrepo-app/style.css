@@ -45,14 +45,13 @@ p{
 }
 
 
-
 /* // section2 (contributors) */
 .contributors{
   display: grid;
   grid-template-columns: 1fr 2fr 0.3fr ;
   align-items: center;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.24);
-  padding: 2rem;
+  padding: 0.5rem;
 }
 
 
@@ -67,6 +66,33 @@ p{
 }
 .img{
   width:60px;
+  margin-top: 1rem;
+}
+
+.pagenumbers {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.pagenumbers button {
+  background-color:#62aada;
+  color: white;
+  font-size: 1.2rem;
+	width: 2rem;
+  height: 2rem;
+  margin: 0.3rem;
+	border: none;
+	cursor: pointer;
+	
+}
+
+.pagenumbers button:hover {
+	background-color: #6aa1bb;
+}
+
+.pagenumbers button.active {
+	background-color: #b6beba;
 }
 
 
@@ -85,6 +111,4 @@ p{
   }
 
 }
-
-
 
